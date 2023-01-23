@@ -1,4 +1,3 @@
-
 import { Form } from './Form';
 import { FormItem } from './FormItem';
 import { Filter } from './Filter';
@@ -28,7 +27,6 @@ export function App() {
  const findeContactByName = () => {
   contactsValue.filter(contact => contact.name.toLowerCase().includes(filterValue.toLowerCase()))
  } 
-
 
   return (
     <Wrapper>
