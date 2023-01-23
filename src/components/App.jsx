@@ -8,7 +8,6 @@ import { Wrapper, Title, Subtitle } from './App.styled';
 export function App() {
 
   const contactsValue = useSelector(state => state.contacts.contacts);
-  const filterValue = useSelector(state => state.contacts.filter);
   const dispatch = useDispatch();
 
   const addContact = ({name, number}) => {
@@ -24,9 +23,7 @@ export function App() {
     dispatch(addItems({ name, number }));
   };
 
- const findeContactByName = () => {
-  contactsValue.filter(contact => contact.name.toLowerCase().includes(filterValue.toLowerCase()))
- } 
+
 
   return (
     <Wrapper>

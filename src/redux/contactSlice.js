@@ -11,8 +11,6 @@ const contactSlice = createSlice({
     reducers: {
 
         addItems (state, action){
-            console.log(state);
-            console.log(action);
             state.contacts.push({
                 id: new Date().toISOString(),
                 name: action.payload.name,
