@@ -1,7 +1,6 @@
 import React from "react";
 import { addFilter } from "redux/contactSlice";
 import { useDispatch, useSelector } from "react-redux";
-import {findeContactByName} from "../notification/notification";
 import { InputForm } from "./Filter.styled"
 
 

@@ -2,11 +2,12 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { deleteContact } from "../../redux/contactSlice"
+import {findeContactByName} from "../notification/notification";
 import PropTypes from 'prop-types';
 import { List, ListItem, Item, Btn } from "./FormItem.styled"
 
 export const FormItem = () => {
-    const contacts = useSelector(state => state.contacts.contacts);
+    const contacts = useSelector(findeContactByName);
     const dispatch = useDispatch();
 
     return (
