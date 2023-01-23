@@ -1,16 +1,19 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import { addFilter } from "redux/contactSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { InputForm } from "./Filter.styled"
 
-export const Filter = ({ value, filterName }) => (
-    <InputForm>
-        <label><h3>Find contact by name</h3>
-            <input type="text" value={value} onChange={filterName} style={{ borderRadius: '10px', marginTop: '5px' }} />
-        </label>
-    </InputForm>
-)
 
-Filter.propTypes = {
-    value: PropTypes.string.isRequired,
-    filterName: PropTypes.func.isRequired,
-};
+export const Filter = () => {
+    const filterValue = useSelector(state => state.contacts.filter)
+    const dispatch = useDispatch();
+
+    return (
+        <InputForm>
+            <label><h3>Find contact by name</h3>
+                <input type="text" value={filterValue} onChange={(e) => dispatch(addFilter(e.target.value))} style={{ borderRadius: '10px', marginTop: '5px' }} />
+            </label>
+        </InputForm>
+    )
+
+}

@@ -1,31 +1,31 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { deleteContact } from "../../redux/contactSlice"
 import PropTypes from 'prop-types';
 import { List, ListItem, Item, Btn } from "./FormItem.styled"
 
-export const FormItem = ({ onDelete }) => {
-    const contacts = useSelector(state => state.contacts.contacts)
+export const FormItem = () => {
+    const contacts = useSelector(state => state.contacts.contacts);
+    const dispatch = useDispatch();
 
     return (
         <List>
-        {
-            contacts.map(({ id, name, number }) => (
-                <ListItem key={id}>
-                    <Item>{name}: {number}</Item>
-                    <Btn type="button" onClick={() => onDelete(id)}>Delete</Btn>
-                </ListItem>
-            ))
-        }
-         </List >
+            {
+                contacts.map(({ id, name, number }) => (
+                    <ListItem key={id}>
+                        <Item>{name}: {number}</Item>
+                        <Btn type="button" onClick={() => dispatch(deleteContact(id))}>Delete</Btn>
+                    </ListItem>
+                ))
+            }
+        </List >
     )
 }
 
 
 FormItem.propTypes = {
-    onDelete: PropTypes.func.isRequired,
-    contacts: PropTypes.arrayOf(PropTypes.exact({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        number: PropTypes.string.isRequired,
-    })),
+    id: PropTypes.string,
+    name: PropTypes.string,
+    number: PropTypes.string,
 }

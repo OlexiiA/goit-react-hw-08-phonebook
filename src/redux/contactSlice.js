@@ -11,17 +11,21 @@ const contactSlice = createSlice({
     reducers: {
 
         addItems (state, action){
+            console.log(state);
+            console.log(action);
             state.contacts.push({
                 id: new Date().toISOString(),
                 name: action.payload.name,
                 number: action.payload.number,
             });
         },
+
+        deleteContact(state, action) {
+          state.contacts = state.contacts.filter((contact) => contact.id !== action.payload);
+        },
+
         addFilter(state, action) {
             state.filter = action.payload;
-          },
-          deleteContact(state, action) {
-            state.items = state.contacts.filter((contact) => contact.id !== action.payload);
           },
     }
 });
