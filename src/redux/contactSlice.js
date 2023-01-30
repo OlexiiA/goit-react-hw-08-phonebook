@@ -11,11 +11,7 @@ const contactSlice = createSlice({
     reducers: {
 
         addItems (state, action){
-            state.contacts.push({
-                id: new Date().toISOString(),
-                name: action.payload.name,
-                number: action.payload.number,
-            });
+            state.contacts.push(action.payload);
         },
 
         deleteContact(state, action) {

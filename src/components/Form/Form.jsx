@@ -1,10 +1,29 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItems } from 'redux/contactSlice';
 import { InputForm, Btn } from './Form.styled';
 
-export function Form({ onSubmit }) {
+export function Form() {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
+    const dispatch = useDispatch();
+    const contacts = useSelector(state => state.contacts.contacts);
+
+    const addContact = () => {
+        const newContact = {
+            id: new Date().toISOString(),
+            name: name,
+            number: number,
+        }
+        const checkContact = contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase());
+    
+        if (checkContact) {
+          alert(`${name} is already in contacts.`);
+          return;
+        }
+    
+        dispatch(addItems(newContact));
+      };
 
     const handleInput = e => {
         switch (e.target.name) {
@@ -21,7 +40,6 @@ export function Form({ onSubmit }) {
 
     const handleSubmit = e => {
         e.preventDefault();
-        onSubmit({ name, number });
         setName('');
         setNumber('');
     };
@@ -54,11 +72,8 @@ export function Form({ onSubmit }) {
                     style={{ borderRadius: '10px', marginBottom: '10px' }}
                 />
             </label>
-            <Btn type="submit">Add contact</Btn>
+            <Btn type="submit" onClick={addContact}>Add contact</Btn>
         </InputForm>
     );
 }
 
-Form.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-};
