@@ -1,17 +1,19 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItems } from 'redux/contactSlice';
+import { addContact } from '../../redux/operations';
+import { selectContacts, selectStatus } from 'redux/selectors';
 import { InputForm, Btn } from './Form.styled';
 
 export function Form() {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     const dispatch = useDispatch();
-    const contacts = useSelector(state => state.contacts.contacts);
+    const contacts = useSelector(selectContacts);
+    const status = useSelector(selectStatus);
 
-    const addContact = () => {
+    const addNewContact = () => {
         const newContact = {
-            id: new Date().toISOString(),
+            //id: !!!генерується бекендом
             name: name,
             number: number,
         }
@@ -22,7 +24,7 @@ export function Form() {
           return;
         }
     
-        dispatch(addItems(newContact));
+        dispatch(addContact(newContact));
       };
 
     const handleInput = e => {
@@ -72,7 +74,7 @@ export function Form() {
                     style={{ borderRadius: '10px', marginBottom: '10px' }}
                 />
             </label>
-            <Btn type="submit" onClick={addContact}>Add contact</Btn>
+            <Btn type="submit" onClick={addNewContact} disabled={status}>Add contact</Btn>
         </InputForm>
     );
 }
