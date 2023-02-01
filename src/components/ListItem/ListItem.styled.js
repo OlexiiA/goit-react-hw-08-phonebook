@@ -4,7 +4,7 @@ export const List = styled.ul`
   margin-top: 10px;
 `;
 
-export const ListItem = styled.li`
+export const ContactList = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;

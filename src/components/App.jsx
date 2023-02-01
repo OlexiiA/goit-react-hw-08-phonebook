@@ -1,5 +1,5 @@
 import { Form } from './Form';
-import { FormItem } from './FormItem';
+import { ListItem } from './ListItem';
 import { Filter } from './Filter';
 import { Wrapper, Title, Subtitle } from './App.styled';
 
@@ -11,7 +11,7 @@ export function App() {
       <Form/>
       <Subtitle>Contacts</Subtitle>
       <Filter/>
-      <FormItem />
+      <ListItem />
     </Wrapper>
   );
 }
