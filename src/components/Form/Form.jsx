@@ -13,17 +13,14 @@ export function Form() {
 
     const addNewContact = () => {
         const newContact = {
-            //id: !!!генерується бекендом
             name: name,
             number: number,
         }
         const checkContact = contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase());
     
         if (checkContact) {
-          alert(`${name} is already in contacts.`);
-          return;
+         return alert(`${name} is already in contacts.`);
         }
-    
         dispatch(addContact(newContact));
       };
 
