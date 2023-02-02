@@ -9,7 +9,7 @@ export const ListItem = () => {
     const status = useSelector(selectStatus);
     const filterName = useSelector(selectFilter);
     const dispatch = useDispatch();
-
+    
     //=========Перший запит на бек===========//
     useEffect(() => {
      dispatch(fetchContacts())
@@ -17,6 +17,7 @@ export const ListItem = () => {
    //========================================//
    
     const findeContactByName = () => {
+        // if (!filterName) return contacts;
         const normalized = filterName.toLowerCase();
         return contacts.filter(contact => {
             return contact.name.toLowerCase().includes(normalized);

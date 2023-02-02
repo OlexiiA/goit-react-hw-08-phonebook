@@ -1,13 +1,14 @@
 import React from "react";
-import { addFilter } from "redux/contactSlice";
+import { addFilter } from "redux/filterSlice";
 import { useDispatch, useSelector } from "react-redux";
+import {selectFilter} from "../../redux/selectors";
 import { InputForm } from "./Filter.styled"
 
 
 
 export const Filter = () => {
     const dispatch = useDispatch();
-    const filterValue = useSelector(state => state.contacts.filter);
+    const filterValue = useSelector(selectFilter);
     
 
     return (

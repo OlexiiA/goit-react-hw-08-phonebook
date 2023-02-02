@@ -13,7 +13,7 @@ export function Form() {
      event.preventDefault();
      const {name, number} = event.target;
         const checkContact = items.find(item => item.name.toLowerCase() === name.value.toLowerCase());
-    
+   
         if (checkContact) {
          return alert(`${name.value} is already in contacts.`);
         }
