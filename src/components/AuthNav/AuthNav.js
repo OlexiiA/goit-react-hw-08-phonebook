@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { List, NavItem } from './AuthNav.styled';
 
 const handlerAuthItem = [
   { to: '/login', title: 'Login' },
@@ -7,14 +7,12 @@ const handlerAuthItem = [
 
 export const AuthNav = () => {
   return (
-    <>
-      <ul>
+      <List>
         {handlerAuthItem.map(({ title, to }) => (
           <li key={title}>
-            <NavLink to={to}>{title}</NavLink>
+            <NavItem to={to}>{title}</NavItem>
           </li>
         ))}
-      </ul>
-    </>
+      </List>
   );
 };

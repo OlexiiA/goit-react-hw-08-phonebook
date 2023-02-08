@@ -9,4 +9,3 @@ export const InputForm = styled.form`
   border-radius: inherit;
   margin-bottom: 10px;
 `;
-

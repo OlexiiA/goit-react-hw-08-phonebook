@@ -1,7 +1,7 @@
 import React from "react";
-import { addFilter } from "redux/filterSlice";
+import { addFilter } from "redux/filter/filterSlice";
 import { useDispatch, useSelector } from "react-redux";
-import {selectFilter} from "../../redux/selectors";
+import { selectFilter } from "../../redux/contacts/selectors";
 import { InputForm } from "./Filter.styled"
 
 
@@ -9,7 +9,7 @@ import { InputForm } from "./Filter.styled"
 export const Filter = () => {
     const dispatch = useDispatch();
     const filterValue = useSelector(selectFilter);
-    
+
 
     return (
         <InputForm>

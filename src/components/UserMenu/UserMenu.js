@@ -1,7 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { logOut } from '../../redux/auth/authOperation';
 import { selectUser } from 'redux/auth/authSelector';
 import { useNavigate } from 'react-router-dom';
+import { Box, Btn, UserName } from './UserMenu.styled';
+
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -18,11 +20,9 @@ export const UserMenu = () => {
   };
 
   return (
-    <div>
-      <p>Welcome, {user.name}</p>
-      <button type="button" onClick={handlerLogOutUser}>
-        Logout
-      </button>
-    </div>
+    <Box>
+      <UserName>Welcome, {user.name}</UserName>
+      <Btn onClick={handlerLogOutUser}>Log out</Btn>
+    </Box>
   );
 };
